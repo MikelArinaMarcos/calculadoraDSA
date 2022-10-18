@@ -61,7 +61,6 @@
         app:cornerRadius="50dip"
         app:layout_constraintBottom_toBottomOf="@+id/dotBtn"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.74"
         app:layout_constraintStart_toEndOf="@+id/dotBtn" />
 
     <Button
@@ -69,7 +68,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginEnd="16dp"
+        android:layout_marginEnd="8dp"
         android:backgroundTint="#A8A8A8"
         android:text="+"
         android:textColor="#8F3707"
@@ -84,7 +83,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginEnd="16dp"
+        android:layout_marginEnd="8dp"
         android:backgroundTint="#A8A8A8"
         android:text="-"
         android:textColor="#8F3707"
@@ -99,7 +98,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginEnd="16dp"
+        android:layout_marginEnd="8dp"
         android:backgroundTint="#A8A8A8"
         android:text="x"
         android:textColor="#8F3707"
@@ -140,12 +139,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
         android:backgroundTint="#A8A8A8"
         android:text="/"
         android:textColor="#8F3707"
         android:textSize="24sp"
         app:cornerRadius="50dip"
         app:layout_constraintBottom_toBottomOf="@+id/percentBtn"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/percentBtn" />
 
     <Button
@@ -241,19 +242,6 @@
         app:layout_constraintStart_toStartOf="@+id/sevenBtn" />
 
     <Button
-        android:id="@+id/clearBtn2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
-        android:backgroundTint="#A8A8A8"
-        android:text="C"
-        android:textColor="#FA1100"
-        android:textSize="24sp"
-        app:cornerRadius="50dip"
-        app:layout_constraintBottom_toTopOf="@+id/clearBtn"
-        app:layout_constraintStart_toStartOf="@+id/clearBtn" />
-
-    <Button
         android:id="@+id/eightBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -298,10 +286,11 @@
         android:layout_height="0dp"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
         android:textAlignment="textEnd"
         android:textColor="#000000"
         android:textSize="34sp"
-        app:layout_constraintBottom_toTopOf="@+id/clearBtn2"
+        app:layout_constraintBottom_toTopOf="@+id/parenthesisBtn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

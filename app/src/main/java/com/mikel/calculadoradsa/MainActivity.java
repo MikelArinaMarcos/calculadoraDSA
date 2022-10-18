@@ -2,8 +2,10 @@ package com.mikel.calculadoradsa;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ActionMenuView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -11,6 +13,7 @@ import android.widget.TextView;
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
     boolean suma = false;
+    boolean decimal = false;
     Double[] numero = new Double[20];
     Double dato;
 
@@ -22,7 +25,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //Definición de los botones
+        //Definición de los botones numéricos
 
         //0
         Button zeroBtn = (Button) findViewById(R.id.zeroBtn);
@@ -54,6 +57,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         //9
         Button nineBtn = (Button) findViewById(R.id.nineBtn);
         nineBtn.setOnClickListener(this);
+
+        // Definición de los botones de operaciones
+
+        //Suma
+        Button plusBtn = (Button) findViewById(R.id.plusBtn);
+        plusBtn.setOnClickListener(this);
+        Button equalBtn = (Button) findViewById(R.id.equalBtn);
+        equalBtn.setOnClickListener(this);
+
     }
 
     public void onClick(View view) {
@@ -92,11 +104,22 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 case R.id.nineBtn:
                     screen.setText(x + "9");
                     break;
+                case R.id.plusBtn:
+                    suma = true;
+                    numero[0] = Double.parseDouble(x);
+                    screen.setText("");
+                    decimal = false;
+                    break;
+
+                case R.id.equalBtn:
+                    numero[1] = Double.parseDouble(x);
+                    if(suma == true){
+                        dato = numero[0] + numero [1];
+                        screen.setText(String.valueOf(dato));
+                    }
             }
         } catch (Exception e) {
             screen.setText("Error");
         }
     }
-
-
 }
