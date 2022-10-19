@@ -10,9 +10,14 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import java.io.BufferedReader;
+
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
     boolean suma = false;
+    boolean resta = false;
+    boolean multiplicacion = false;
+    boolean division = false;
     boolean decimal = false;
     Double[] numero = new Double[20];
     Double dato;
@@ -63,6 +68,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         //Suma
         Button plusBtn = (Button) findViewById(R.id.plusBtn);
         plusBtn.setOnClickListener(this);
+        //Resta
+        Button minusBtn = (Button) findViewById(R.id.minusBtn);
+        minusBtn.setOnClickListener(this);
+        //Multiplicación
+        Button timesBtn = (Button) findViewById(R.id.timesBtn);
+        timesBtn.setOnClickListener(this);
+        //División
+        Button dividedByBtn = (Button) findViewById(R.id.dividedByBtn);
+        dividedByBtn.setOnClickListener(this);
+        //Igual
         Button equalBtn = (Button) findViewById(R.id.equalBtn);
         equalBtn.setOnClickListener(this);
 
@@ -104,18 +119,51 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 case R.id.nineBtn:
                     screen.setText(x + "9");
                     break;
+
+                //Casos de las operaciones
                 case R.id.plusBtn:
                     suma = true;
                     numero[0] = Double.parseDouble(x);
                     screen.setText("");
                     decimal = false;
                     break;
+                case R.id.minusBtn:
+                    resta = true;
+                    numero[0] = Double.parseDouble(x);
+                    screen.setText("");
+                    decimal = false;
+                    break;
+                case R.id.timesBtn:
+                    multiplicacion = true;
+                    numero[0] = Double.parseDouble(x);
+                    screen.setText("");
+                    decimal = false;
+                    break;
+                case R.id.dividedByBtn:
+                    division = true;
+                    numero[0] = Double.parseDouble(x);
+                    screen.setText("");
+                    decimal = false;
+                    break;
 
+                //Caso del igual (resultado)
                 case R.id.equalBtn:
                     numero[1] = Double.parseDouble(x);
                     if(suma == true){
-                        dato = numero[0] + numero [1];
+                        dato = numero[0] + numero[1];
                         screen.setText(String.valueOf(dato));
+                    }
+                    if(resta == true){
+                        dato = numero[0] - numero[1];
+                        screen.setText(String.valueOf(dato));
+                    }
+                    if(multiplicacion == true){
+                        dato = numero[0] * numero[1];
+                        screen.setText(String.valueOf(dato));
+                    if (division == true){
+                        dato = numero[0] / numero[1];
+                        screen.setText(String.valueOf(dato));
+                    }
                     }
             }
         } catch (Exception e) {
