@@ -80,6 +80,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         //Igual
         Button equalBtn = (Button) findViewById(R.id.equalBtn);
         equalBtn.setOnClickListener(this);
+        //Borrar
+        Button clearBtn = (Button) findViewById(R.id.clearBtn);
+        clearBtn.setOnClickListener(this);
 
     }
 
@@ -145,6 +148,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     screen.setText("");
                     decimal = false;
                     break;
+                case R.id.clearBtn:
+                    screen.setText("");
+                    decimal = false;
+                    break;
 
                 //Caso del igual (resultado)
                 case R.id.equalBtn:
@@ -153,17 +160,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         dato = numero[0] + numero[1];
                         screen.setText(String.valueOf(dato));
                     }
-                    if(resta == true){
+                    else if(resta == true){
                         dato = numero[0] - numero[1];
                         screen.setText(String.valueOf(dato));
                     }
-                    if(multiplicacion == true){
+                    else if(multiplicacion == true) {
                         dato = numero[0] * numero[1];
                         screen.setText(String.valueOf(dato));
-                    if (division == true){
+                    }
+                    else if (division == true){
                         dato = numero[0] / numero[1];
                         screen.setText(String.valueOf(dato));
-                    }
                     }
             }
         } catch (Exception e) {
