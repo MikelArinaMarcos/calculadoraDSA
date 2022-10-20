@@ -8,21 +8,25 @@ import android.view.View;
 import android.widget.ActionMenuView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Switch;
 import android.widget.TextView;
 
 import java.io.BufferedReader;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
+    //Definición de las variables que se van a utilizar
     boolean suma = false;
     boolean resta = false;
     boolean multiplicacion = false;
     boolean division = false;
     boolean decimal = false;
+    boolean radianes = false;
+    boolean seno = false;
+    boolean coseno = false;
+    boolean tangente = false;
     Double[] numero = new Double[20];
     Double dato;
-
-
 
 
     @Override
@@ -83,6 +87,24 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         //Borrar
         Button clearBtn = (Button) findViewById(R.id.clearBtn);
         clearBtn.setOnClickListener(this);
+        //Coma
+        Button dotBtn = (Button) findViewById(R.id.dotBtn);
+        dotBtn.setOnClickListener(this);
+
+        // Funciones complejas
+
+        //Seno
+        Button sinBtn = (Button) findViewById(R.id.sinBtn);
+        sinBtn.setOnClickListener(this);
+        //Coseno
+        Button cosBtn = (Button) findViewById(R.id.cosBtn);
+        cosBtn.setOnClickListener(this);
+        //Tangente
+        Button tanBtn = (Button) findViewById(R.id.tanBtn);
+        tanBtn.setOnClickListener(this);
+        //Cambio a radianes
+        Button radBtn = (Button) findViewById(R.id.radBtn);
+        radBtn.setOnClickListener(this);
 
     }
 
@@ -153,6 +175,23 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     decimal = false;
                     break;
 
+                // Casos operaciones complejas
+                case R.id.radBtn:
+                    radianes = true;
+                    break;
+                case R.id.sinBtn:
+                    seno = true;
+                    screen.setText(x + "");
+                    break;
+                case R.id.cosBtn:
+                    coseno = true;
+                    screen.setText(x + "");
+                    break;
+                case R.id.tanBtn:
+                    tangente = true;
+                    screen.setText(x + "");
+                    break;
+
                 //Caso del igual (resultado)
                 case R.id.equalBtn:
                     numero[1] = Double.parseDouble(x);
@@ -172,6 +211,56 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         dato = numero[0] / numero[1];
                         screen.setText(String.valueOf(dato));
                     }
+
+                    else if (seno == true){
+                        if (radianes == true){
+                            double radian = Math.toRadians((Double.parseDouble(x)));
+                            dato = Math.sin(radian);
+                            screen.setText(String.valueOf(dato));
+                        }
+                        else{
+                            double degrees = Math.toDegrees(Double.parseDouble(x));
+                            dato = Math.sin(degrees);
+                            double result = Math.toDegrees(dato);
+                            screen.setText(String.valueOf(result));
+                        }
+                    }
+
+                    else if (coseno == true){
+                        if (radianes == true){
+                            double radian = Math.toRadians((Double.parseDouble(x)));
+                            dato = Math.cos(radian);
+                            screen.setText(String.valueOf(dato));
+                        }
+                        else{
+                            double degrees = Math.toDegrees(Double.parseDouble(x));
+                            dato = Math.cos(degrees);
+                            double result = Math.toDegrees(dato);
+                            screen.setText(String.valueOf(result));
+                        }
+                    }
+
+                    else if (tangente == true){
+                        if (radianes == true){
+                            double radian = Math.toRadians((Double.parseDouble(x)));
+                            dato = Math.tan(radian);
+                            screen.setText(String.valueOf(dato));
+                        }
+                        else{
+                            double degrees = Math.toDegrees(Double.parseDouble(x));
+                            dato = Math.tan(degrees);
+                            double result = Math.toDegrees(dato);
+                            screen.setText(String.valueOf(result));
+                        }
+                    }
+
+                    decimal = false;
+                    suma = false;
+                    division = false;
+                    multiplicacion = false;
+                    resta = false;
+                    break;
+
             }
         } catch (Exception e) {
             screen.setText("Error");
